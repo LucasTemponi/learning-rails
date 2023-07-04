@@ -1,0 +1,27 @@
+<div class='flex gap-2 flex-col'>
+  <%= link_to("Back to Homepage",{controller: 'main',action: 'index'})%><br/>
+  <h1 class="text-3xl font-bold underline" >Tasks#index</h1>
+  <%= link_to("Add new task",{action: 'new'})%><br/>
+  <table class='w-[max(700px,90vw)] text-center mt-2'>
+    <tr>
+      <th>#</th>
+      <th class='text-teal-700'>Task</th>
+      <th>Completed</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%=task.position%></td>
+        <td><%=task.name%></td>
+        <td><%=task.completed? ? 'Yes' : 'No'  %></td>
+        <td><%=task.category&.name || '-' %></td>
+        <td>
+          <%= link_to("Show",task_path(task), class: 'text-teal-500') %>
+          <%= link_to("Edit", edit_task_path(task), class: 'text-teal-500') %>
+          <%= link_to("Show","#", class: 'text-teal-500') %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

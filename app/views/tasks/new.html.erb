@@ -1,0 +1,8 @@
+<div>
+  <%= link_to('Back to list',tasks_path)%>
+  <h1 class="text-3xl font-bold underline">Create task</h1>
+  <%= form_for(@task) do |f| %>
+    <% # url: tasks_path, method: 'post' %>
+    <%= render(partial: 'form',locals: ({f: f,button_label: 'Create task'}))%>
+  <%end%>
+</div>
