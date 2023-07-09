@@ -5,4 +5,11 @@
     <% # url: tasks_path(@task), method: 'patch' %>
     <%= render(partial: 'form',locals: ({f: f,button_label: 'Edit task'}))%>
   <%end%>
+  <select>
+    <% @categories.each do |category|%>
+      <option>
+        <%= category.name%>
+      </option>
+    <%end%>
+  </select>
 </div>

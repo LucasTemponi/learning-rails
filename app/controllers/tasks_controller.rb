@@ -3,11 +3,9 @@ class TasksController < ApplicationController
     @tasks = Task.order(:position)
   end
 
-  def new
-  end
-
   def edit
     @task = Task.find(params[:id])
+    @categories = Category.order(:id) || []
   end
 
   def show
@@ -16,7 +14,8 @@ class TasksController < ApplicationController
 
   def new
     @count = Task.count
-    @task = Task.new(position: @count+1)
+    @task = Task.new(position: @count + 1)
+    @categories = Category.order(:id) || []
   end
 
   def create
@@ -38,14 +37,13 @@ class TasksController < ApplicationController
     end
   end
 
-  def delete
-  end
+  def delete; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
+
   def task_params
-    params.require(:task).permit(:name, :position, :completed, :description)
+    params.require(:task).permit(:name, :position, :completed, :description, :category)
   end
 end

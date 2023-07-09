@@ -1,2 +1,14 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<div class='flex flex-col justify-center mx-auto'>
+  <%= link_to('Back to list',categories_path)%>
+  <h1 class="text-3xl font-bold underline mb-4">Create task</h1>
+  <%= form_for(@category) do |f| %>
+    <% # url: category_path, method: 'post' %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name,:required=>true)%></td>
+      </tr>
+    </table>
+    <button><%= f.submit('Criar nova categoria')%></button>
+  <%end%>
+</div>
