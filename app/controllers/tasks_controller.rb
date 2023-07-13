@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :logged_in
+
   def index
     @tasks = Task.order(:position)
   end
@@ -19,8 +21,11 @@ class TasksController < ApplicationController
   end
 
   def create
+    puts(params)
     @task = Task.new(task_params)
+    @category = Category.find(task_params[:category_id])
     if @task.save
+      @category.tasks << @task
       redirect_to tasks_path
     else
       render('new')
@@ -37,6 +42,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete_task
+    @task = Task.find(params[:id])
+    @task.update(completed: true)
+    redirect_to tasks_path
+  end
+
   def delete; end
 
   def destroy; end
@@ -44,6 +55,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :position, :completed, :description, :category)
+    params.require(:task).permit(:name, :position, :completed, :description, :category_id)
   end
 end

@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   root 'main#index'
 
-  match 'about', to: 'main#about', via: :get
+  match 'about', to: 'main#new', via: :get
   match 'hello', to: 'main#hello', via: :get
+  match 'signup', to: 'registration#new', via: :get
+  post 'signup', to: 'registration#create'
+  match 'login', to: 'session#new', via: :get
+  post 'login', to: 'session#login'
+  delete 'logout', to: 'session#destroy'
+
+  patch 'tasks/:id/complete', to: 'tasks#complete_task', as: :complete
 
   get 'main/index'
 

@@ -15,5 +15,9 @@
     <th>Description</th>
     <td><%= f.text_area(:description)%></td>
   </tr>
+  <tr>
+    <th>Category</th>
+    <td><%= f.select :category_id, categories.map { |category| [category.name,category.id] }, :include_blank => true  %></td>
+  </tr>
 </table>
 <button><%= f.submit(button_label)%></button>

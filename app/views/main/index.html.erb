@@ -1,10 +1,15 @@
-<div class='flex flex-col' >
-  <h1>Main#index</h1>
-  <a href="/tasks/index">Tasks 1</a><br/>
-  <%=  link_to("Tasks 2",{controller: 'tasks',action: 'index',id: 2})%><br/>
-  <%= link_to("About",{action: 'about',id: 5,page: 20, :class=>'text-lime-400'})%><br/>
-  <%= link_to("Categories",categories_path)%><br/>
-  <%= link_to("Tasks",tasks_path)%><br/>
-  <button class='text-lime-400 bg-slate-500 ' >Clique aqui</button>
-  <%= link_to('First task',task_path(1))%>
+<div class='flex flex-col p-4' >
+  <h1>Hello <%= @logged_user%></h1>
+  <nav class='flex flex-row justify-between' >
+    <ul class='flex flex-row gap-2' >
+      <li>
+        <%= link_to("Categories",categories_path)%>
+      </li>
+      <li>
+        <%= link_to("Tasks",tasks_path)%>
+      </li>
+    </ul>
+    <button class='border border-orange-500 rounded-full h-8 w-8'></button>
+  </nav>
 </div>
+<%= button_to('logout', logout_path,{method: :delete})%>

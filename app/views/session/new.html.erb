@@ -1,0 +1,17 @@
+<div class='flex items-center justify-center min-h-screen '>
+  <%= form_with model: @user, url: login_path do |f| %>
+    <div class='flex justify-center flex-col w-[min(600px,80vw)]' >
+      <table>
+        <tr>
+          <th>Email</th>
+          <td><%= f.text_field(:email,:required=>true)%></td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td><%= f.password_field(:password,:required=>true)%></td>
+        </tr>
+      </table>
+      <button class='mt-8' ><%= f.submit('Entrar',class:'border cursor-pointer hover:bg-slate-100')%></button>
+    </div>
+  <%end%>
+  <div>

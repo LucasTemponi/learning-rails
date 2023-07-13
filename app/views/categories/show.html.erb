@@ -3,6 +3,5 @@
 <% @tasks.each do |task| %>
   <p>
     <%= link_to(task.name,{controller: 'tasks',action: 'show'})%><br/>
-    <%=task.name%>
   </p>
 <%end%>
