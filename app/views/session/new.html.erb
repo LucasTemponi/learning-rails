@@ -1,17 +1,39 @@
-<div class='flex items-center justify-center min-h-screen '>
-  <%= form_with model: @user, url: login_path do |f| %>
-    <div class='flex justify-center flex-col w-[min(600px,80vw)]' >
-      <table>
-        <tr>
-          <th>Email</th>
-          <td><%= f.text_field(:email,:required=>true)%></td>
-        </tr>
-        <tr>
-          <th>Password</th>
-          <td><%= f.password_field(:password,:required=>true)%></td>
-        </tr>
-      </table>
-      <button class='mt-8' ><%= f.submit('Entrar',class:'border cursor-pointer hover:bg-slate-100')%></button>
+<div class='flex flex-col sm:flex-row w-screen h-screen '>
+  <div class='w-full sm:w-3/5 flex justify-center items-center h-[23.58vh] sm:h-screen bg-gradient-to-r from-indigo-500'>
+    <div class='flex w-[min(600px,90%)] flex-col justify-center flex-wrap content-center lg:content-start'>
+      <h1 class='text-[2.5rem] font-bold text-white'>TaskManager</h1>
+      <h4 class='text-lg mb-6 font-medium text-white'>Um projeto bobo usando rails</h4>
+      <%= link_to('Read More','/about', :class=> "class:' w-[8.44rem] bg-[#0575E6] text-sm py-2 px-[1.88rem] cursor-pointer rounded-3xl hover:bg-[#045cb4]' hidden sm:block text-white" )%>
     </div>
-  <%end%>
-  <div>
+    <svg class='absolute hidden sm:block bottom-0 left-0' width="431" height="280" viewBox="0 0 431 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="152.5" cy="304.5" r="278" stroke="#0575E6"/>
+      <circle cx="71.5" cy="278.5" r="278" stroke="#0575E6"/>
+    </svg>
+  </div>
+  <div class='w-full h-full flex-col flex justify-center items-center sm:w-2/5' >
+    <div class='flex justify-center flex-col w-[min(19.2rem,90%)]' >
+      <h2 class= 'text-[1.625rem] font-bold'>Login</h2>
+      <h3 class='text-lg font-normal mb-[2.44rem] ' >Entre ou <%= link_to('faça seu cadastro','/signup',:class => 'text-lg font-semibold text-[#0575E6]')%></h3>
+      <%= form_with model: @user, url: login_path do |f| %>
+        <div class='mb-4 flex items-center relative max-w-full w-80' >
+          <svg class='absolute pointer-events-none ml-[1.62rem]' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.3">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 5.25L2.25 4.5H21.75L22.5 5.25V18.75L21.75 19.5H2.25L1.5 18.75V5.25ZM3 6.8025V18H21V6.804L12.465 13.35H11.55L3 6.8025ZM19.545 6H4.455L12 11.8035L19.545 6Z" fill="#333333"/>
+            </g>
+          </svg>
+          <%= f.text_field(:email,:required=>true,:class=>'border border-[#EEE] rounded-3xl focus:border-[#0575E6] focus:outline-none py-[1.12rem] pl-[3.62rem] pr-[1.62rem] w-full',:placeholder=>'Email')%>
+        </div>
+        <div class='mb-4 flex items-center relative max-w-full w-80' >
+          <svg class='absolute pointer-events-none ml-[1.62rem]' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.3">
+              <path d="M20 12C20 10.897 19.103 10 18 10H17V7C17 4.243 14.757 2 12 2C9.243 2 7 4.243 7 7V10H6C4.897 10 4 10.897 4 12V20C4 21.103 4.897 22 6 22H18C19.103 22 20 21.103 20 20V12ZM9 7C9 5.346 10.346 4 12 4C13.654 4 15 5.346 15 7V10H9V7Z" fill="#333333"/>
+            </g>
+          </svg>
+          <%= f.password_field(:password,:required=>true,:class=>'border border-[#EEE] rounded-3xl focus:border-[#0575E6] focus:outline-none py-[1.12rem] pl-[3.62rem] pr-[1.62rem] w-full',:placeholder=>'Senha')%>
+        </div>
+        <%= f.submit('Entrar',class:'border bg-[#0575E6] text-sm w-full mb-4 py-[1.12rem] px-[1.62rem] cursor-pointer rounded-3xl hover:bg-[#045cb4]')%>
+      <%end%>
+      <%= link_to('Esqueceu sua senha','/signup',:class => 'text-sm mx-auto')%>
+    </div>
+  </div>
+</div>
