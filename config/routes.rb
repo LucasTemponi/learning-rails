@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'login', to: 'session#login'
   delete 'logout', to: 'session#destroy'
 
-  patch 'tasks/:id/complete', to: 'tasks#complete_task', as: :complete
+  patch 'tasks/:id/toggle_complete', to: 'tasks#toggle_complete', as: :complete
 
   get 'main/index'
 

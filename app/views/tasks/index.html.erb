@@ -15,9 +15,8 @@
         <td><%=task.position%></td>
         <td><%=task.name%></td>
         <td>
-          <%= form_with model: task do |f|%>
-            <%= f.check_box :completed%>
-            <button><%= f.submit('Alterar')%></button>
+          <%= form_with(model: task, url: complete_path(task)) do |f|%>
+            <%= f.check_box :completed, { onchange: 'this.form.submit();' }%>
           <%end%>
           <td><%=task.category&.name || '-' %></td>
           <td>
